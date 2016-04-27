@@ -1,4 +1,4 @@
-FROM php:5-fpm
+FROM php:fpm
 MAINTAINER docker@mikeditum.co.uk
 
 RUN apt-get update && apt-get install -y libmagickwand-dev
