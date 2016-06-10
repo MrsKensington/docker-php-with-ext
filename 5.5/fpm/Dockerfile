@@ -1,4 +1,5 @@
-FROM php:fpm
+FROM php:5.5-fpm
+
 MAINTAINER docker@mikeditum.co.uk
 
 RUN apt-get update && \
