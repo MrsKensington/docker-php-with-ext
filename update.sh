@@ -4,16 +4,23 @@ ls | egrep -v "README.md|update.sh" | xargs rm -rf
 git clone https://github.com/docker-library/php.git
 
 for i in `find php -name "Dockerfile"`; do
+
 	DIR=`dirname $i`
 	TYPE=`basename $DIR`;
 	DIR=`dirname $DIR`
 	VERSION=`basename $DIR`;
+    TAG="php:${VERSION}-${TYPE}"
+
+    if [ "${VERSION}" == "php" ]; then
+        VERSION="${TYPE}"
+        TYPE=""
+    fi
 
 	DIR="${VERSION}/${TYPE}/"
 	FILE="${DIR}/Dockerfile"
 	mkdir -p ${DIR}
-	
-	echo "FROM php:${VERSION}-${TYPE}" > $FILE
+
+	echo "FROM ${TAG}" > $FILE
 	echo '' >> $FILE
 	echo 'MAINTAINER docker@mikeditum.co.uk' >> $FILE
 	echo '' >> $FILE
