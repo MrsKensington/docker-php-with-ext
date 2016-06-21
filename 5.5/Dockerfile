@@ -1,4 +1,4 @@
-FROM php:php-5.5
+FROM php:5.5
 
 MAINTAINER docker@mikeditum.co.uk
 

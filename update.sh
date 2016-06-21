@@ -14,6 +14,7 @@ for i in `find php -name "Dockerfile"`; do
     if [ "${VERSION}" == "php" ]; then
         VERSION="${TYPE}"
         TYPE=""
+        TAG="php:${VERSION}"
     fi
 
 	DIR="${VERSION}/${TYPE}/"
