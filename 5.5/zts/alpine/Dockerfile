@@ -1,4 +1,4 @@
-FROM php:zts-alpine
+FROM php:5.5-zts-alpine
 
 MAINTAINER docker@mikeditum.co.uk
 

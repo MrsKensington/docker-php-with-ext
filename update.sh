@@ -5,20 +5,11 @@ git clone https://github.com/docker-library/php.git
 
 for i in `find php -name "Dockerfile"`; do
 
-	DIR=`dirname $i`
-	TYPE=`basename $DIR`;
-	DIR=`dirname $DIR`
-	VERSION=`basename $DIR`;
-    TAG="php:${VERSION}-${TYPE}"
-
-    if [ "${VERSION}" == "php" ]; then
-        VERSION="${TYPE}"
-        TYPE=""
-        TAG="php:${VERSION}"
-    fi
-
-	DIR="${VERSION}/${TYPE}/"
+	DIR=`dirname $i | sed 's|php/||g'`
+    TAG=`echo $DIR | sed 's|/|-|g'`
+    TAG="php:${TAG}"
 	FILE="${DIR}/Dockerfile"
+    
 	mkdir -p ${DIR}
 
 	echo "FROM ${TAG}" > $FILE
