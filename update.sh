@@ -3,7 +3,7 @@
 ls | egrep -v "README.md|update.sh" | xargs rm -rf 
 git clone https://github.com/docker-library/php.git
 
-for i in `find php -name "Dockerfile"`; do
+for i in `find php -name "Dockerfile" | grep -v alpine`; do
 
 	DIR=`dirname $i | sed 's|php/||g'`
     TAG=`echo $DIR | sed 's|/|-|g'`
