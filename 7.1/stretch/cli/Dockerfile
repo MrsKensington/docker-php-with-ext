@@ -1,4 +1,4 @@
-FROM php:7.1-stretch-cli
+FROM php:7.1-cli-stretch
 
 MAINTAINER docker@mikeditum.co.uk
 

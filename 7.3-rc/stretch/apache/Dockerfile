@@ -1,4 +1,4 @@
-FROM php:7.3-rc-stretch-apache
+FROM php:7.3-rc-apache-stretch
 
 MAINTAINER docker@mikeditum.co.uk
 

@@ -7,7 +7,9 @@ cat << EOF
 # 6. Remove the other break point
 # 7. Resume script execution
 # 8. Click Save Changes Again
-# 9. Paste the code below in
+# 9. Paste the code below into the console
+# 10. Resume script execution
+
 var values = "$(./buildSettingsList.sh | xargs echo)".split(" ");
 
 var diff = values.length - (a.length * 3);

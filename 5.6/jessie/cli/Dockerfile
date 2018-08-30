@@ -1,4 +1,4 @@
-FROM php:5.6-jessie-cli
+FROM php:5.6-cli-jessie
 
 MAINTAINER docker@mikeditum.co.uk
 

@@ -1,4 +1,4 @@
-FROM php:5.6-jessie-fpm
+FROM php:5.6-fpm-jessie
 
 MAINTAINER docker@mikeditum.co.uk
 

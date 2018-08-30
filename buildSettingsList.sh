@@ -1,6 +1,10 @@
 #create all of the individual ones
 for i in `find -name Dockerfile -exec dirname {} \; | sed 's#\./##g'`; do 
-    NAME=`echo $i | sed 's#/#-#g'`; 
+    VERSION=`echo $i | sed 's|/| |g' | awk '{print $1}'`
+    OS=`echo $i | sed 's|/| |g' | awk '{print $2}'`
+    VARIANT=`echo $i | sed 's|/| |g' | awk '{print $3}'`
+    NAME="${VERSION}-${VARIANT}-${OS}"
+
     echo "master /$i/ $NAME"; 
 done
 

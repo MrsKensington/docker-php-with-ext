@@ -1,4 +1,4 @@
-FROM php:5.6-jessie-zts
+FROM php:5.6-zts-jessie
 
 MAINTAINER docker@mikeditum.co.uk
 

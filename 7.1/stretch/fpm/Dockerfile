@@ -1,4 +1,4 @@
-FROM php:7.1-stretch-fpm
+FROM php:7.1-fpm-stretch
 
 MAINTAINER docker@mikeditum.co.uk
 

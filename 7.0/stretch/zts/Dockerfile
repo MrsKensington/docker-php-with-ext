@@ -1,4 +1,4 @@
-FROM php:7.0-stretch-zts
+FROM php:7.0-zts-stretch
 
 MAINTAINER docker@mikeditum.co.uk
 

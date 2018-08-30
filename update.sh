@@ -1,21 +1,24 @@
 #!/bin/bash
 
-ls | egrep -v "README.md|update.sh" | xargs rm -rf 
+ls | egrep -v "README.md|update.sh|generateBuildSettingsJavascript.sh|buildSettingsList.sh" | xargs rm -rf 
 git clone https://github.com/docker-library/php.git
 
 for i in `find php -name "Dockerfile" | grep -v alpine`; do
 
-	DIR=`dirname $i | sed 's|php/||g'`
-    TAG=`echo $DIR | sed 's|/|-|g'`
+    DIR=`dirname $i | sed 's|php/||g'`
+    VERSION=`echo $DIR | sed 's|/| |g' | awk '{print $1}'`
+    OS=`echo $DIR | sed 's|/| |g' | awk '{print $2}'`
+    VARIANT=`echo $DIR | sed 's|/| |g' | awk '{print $3}'`
+    TAG="${VERSION}-${VARIANT}-${OS}"
     TAG="php:${TAG}"
-	FILE="${DIR}/Dockerfile"
+    FILE="${DIR}/Dockerfile"
     
-	mkdir -p ${DIR}
+    mkdir -p ${DIR}
 
-	echo "FROM ${TAG}" > $FILE
-	echo '' >> $FILE
-	echo 'MAINTAINER docker@mikeditum.co.uk' >> $FILE
-	echo '' >> $FILE
+    echo "FROM ${TAG}" > $FILE
+    echo '' >> $FILE
+    echo 'MAINTAINER docker@mikeditum.co.uk' >> $FILE
+    echo '' >> $FILE
     echo 'RUN apt-get update && \' >> $FILE
     echo '    apt-get install -y libmagickwand-dev libldap2-dev && \' >> $FILE
     echo '    apt-get clean' >> $FILE
